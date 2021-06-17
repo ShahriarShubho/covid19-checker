@@ -1,20 +1,33 @@
 // import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import { fetchData } from "./Api/Api";
+import { fetchData } from "./Api/Api";
 import "./App.css";
 import Cards from "./Components/Cards/Cards";
+import Cart from "./Components/Chart/Chart"
 
 function App() {
-  const url = 'https://covid19.mathdro.id/api';
+  // const url = 'https://covid19.mathdro.id/api';
     const [info, setInfo] = useState({})
-  
-      useEffect(() => {
-          fetch(url)
-          .then(response => response.json())
-          .then(data => setInfo(data) )
-          .catch(err =>console.log(err))
 
-      },[])
+    // const [dailyData, setDailyData] = useState({});
+
+    useEffect(() => {
+      const fetchMyAPI = async () => {
+        const initialDailyData = await fetchData();
+  
+        setInfo(initialDailyData);
+      };
+  
+      fetchMyAPI();
+    }, []);
+  
+      // useEffect(() => {
+      //     fetch(url)
+      //     .then(response => response.json())
+      //     .then(data => setInfo(data) )
+      //     .catch(err =>console.log(err))
+
+      // },[])
   
       
     
@@ -22,6 +35,7 @@ function App() {
   return (
     <div className="App">
       <Cards covidInfo={info}></Cards>
+      <Cart></Cart>
     </div>
   );
 }

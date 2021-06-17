@@ -6,11 +6,11 @@ import styles from './Cards.module.css';
 import cx from 'classnames';
 
 const Cards = ({ covidInfo: { confirmed, recovered, deaths, lastUpdate } }) => {
-    console.log(confirmed);
+    
     if(!confirmed){
         return <h3 pt={10}>Loading....</h3>
     }
-    console.log(confirmed);
+    
     return (
         <div className={styles.container}>
         <Grid container spacing={3} justify="center">
