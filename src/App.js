@@ -4,12 +4,11 @@ import { fetchData } from "./Api/Api";
 import "./App.css";
 import Cards from "./Components/Cards/Cards";
 import Cart from "./Components/Chart/Chart"
+import CountryPicker from './Components/CountryPicker/CountryPicker'
 
 function App() {
-  // const url = 'https://covid19.mathdro.id/api';
-    const [info, setInfo] = useState({})
 
-    // const [dailyData, setDailyData] = useState({});
+    const [info, setInfo] = useState({})
 
     useEffect(() => {
       const fetchMyAPI = async () => {
@@ -21,20 +20,15 @@ function App() {
       fetchMyAPI();
     }, []);
   
-      // useEffect(() => {
-      //     fetch(url)
-      //     .then(response => response.json())
-      //     .then(data => setInfo(data) )
-      //     .catch(err =>console.log(err))
+    const handleChange = async (country) => {
+      console.log(country);
+      console.log(fetchData)
+    }
 
-      // },[])
-  
-      
-    
-// console.log(data);
   return (
     <div className="App">
       <Cards covidInfo={info}></Cards>
+      <CountryPicker handleChange={handleChange}></CountryPicker>
       <Cart></Cart>
     </div>
   );
