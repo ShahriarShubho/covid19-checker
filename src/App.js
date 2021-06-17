@@ -9,6 +9,7 @@ import CountryPicker from './Components/CountryPicker/CountryPicker'
 function App() {
 
     const [info, setInfo] = useState({})
+    const [country, setCountries] = useState('')
 
     useEffect(() => {
       const fetchMyAPI = async () => {
@@ -18,18 +19,23 @@ function App() {
       };
   
       fetchMyAPI();
-    }, []);
+    }, [setInfo]);
   
     const handleChange = async (country) => {
-      console.log(country);
-      console.log(fetchData)
+     
+        const initialDailyData = await fetchData(country);
+  
+        setInfo(initialDailyData);
+        setCountries(country)
+      ;
+      
     }
-
+    console.log(country);
   return (
     <div className="App">
       <Cards covidInfo={info}></Cards>
       <CountryPicker handleChange={handleChange}></CountryPicker>
-      <Cart></Cart>
+      <Cart covidInfo={info} country={country}></Cart>
     </div>
   );
 }
