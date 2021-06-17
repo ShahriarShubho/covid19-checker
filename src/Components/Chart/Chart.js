@@ -4,18 +4,18 @@ import { Line, Bar } from 'react-chartjs-2';
 import styles from './Cart.module.css';
 
 const Chart = ({covidInfo, country}) => {
+
     const {confirmed, recovered, deaths } = covidInfo
-    console.log(covidInfo);
-  const [dailyData, setDailyData] = useState({});
+ 
+    const [dailyData, setDailyData] = useState({});
 
   useEffect(() => {
     const fetchAPI = async () => {
       setDailyData(await fetchDailyData());
     };
 
-
-
     fetchAPI();
+
   }, []);
 
   const barChart = (

@@ -19,6 +19,7 @@ export const fetchData = async (country) => {
   }
 };
 
+//daily update api
 export const fetchDailyData = async () => {
   try {
     const { data } = await axios.get(`${url}/daily`);
@@ -28,6 +29,7 @@ export const fetchDailyData = async () => {
   }
 };
 
+//unique country api
 export const fetchCountries = async () => {
   try {
     const { data: { countries } } = await axios.get(`${url}/countries`);

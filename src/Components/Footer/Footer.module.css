@@ -1,0 +1,12 @@
+.footer a{
+    text-decoration:none;
+    color: gray
+}
+.footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: lightcyan;
+    width: 100%;
+    text-align: center;
+    color: gray
+}
