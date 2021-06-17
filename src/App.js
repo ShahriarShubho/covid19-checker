@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+// import axios from "axios";
+import React, { useEffect, useState } from "react";
+// import { fetchData } from "./Api/Api";
+import "./App.css";
+import Cards from "./Components/Cards/Cards";
 
 function App() {
+  const url = 'https://covid19.mathdro.id/api';
+    const [info, setInfo] = useState({})
+  
+      useEffect(() => {
+          fetch(url)
+          .then(response => response.json())
+          .then(data => setInfo(data) )
+          .catch(err =>console.log(err))
+
+      },[])
+  
+      
+    
+// console.log(data);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Cards covidInfo={info}></Cards>
     </div>
   );
 }
